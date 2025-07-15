@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Massa Designers</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #fff;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 1920px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      .section-one {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .section-one-one {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 549px;
+        flex-shrink: 0;
+      }
+
+      .section-one-one .title {
+        max-width: 510px;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0;
+        text-align: center;
+        color: #1f2937;
+        margin-bottom: 30px;
+      }
+
+      .section-one-one .button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #111827;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 90%;
+      }
+
+      .clipped-image {
+        display: block;
+        flex: 1;
+        min-width: 0;   
+        max-width: 1129px;
+        height: auto;
+        clip-path: polygon(
+          11% 0,
+          100% 0,
+          100% 73.5%,
+          89% 100%,
+          0 100%,
+          0 26.5%
+        );
+      }
+
+      @media (max-width: 1024px) {
+        .section-one {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .section-one-one {
+          max-width: 100%;
+          order: 2;
+        }
+
+        .section-one-one .title {
+          font-size: 32px;
+          line-height: 40px;
+        }
+
+        .clipped-image {
+          width: 100%;
+          max-width: none;
+          order: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section-one">
+        <div class="section-one-one">
+          <div class="title">Присоединяйтесь к клубу дизайнеров MASSA</div>
+          <a href="#" class="button">Зарегистрироваться</a>
+        </div>
+
+        <img
+          class="clipped-image"
+          src="./assets/section_one/1.png"
+          alt="Дизайнеры обсуждают проект"
+        />
+      </div>
+    </div>
+  </body>
+</html>
