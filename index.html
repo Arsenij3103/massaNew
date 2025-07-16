@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
 
@@ -18,6 +18,7 @@
         --background-color: #fff;
         --gap-small: 20px;
         --gap-large: 40px;
+        --brand-orange: #f97316;
       }
       * {
         box-sizing: border-box;
@@ -28,13 +29,12 @@
         margin: 0;
         overflow-x: hidden;
       }
-
       .container {
         max-width: 1920px;
         margin: 40px auto;
         padding: 20px;
+        outline: 1px solid red;
       }
-
       .section-one {
         display: flex;
         align-items: center;
@@ -42,7 +42,6 @@
         gap: var(--gap-small);
         margin-bottom: 80px;
       }
-
       .section-one-one {
         display: flex;
         flex-direction: column;
@@ -50,7 +49,6 @@
         max-width: 549px;
         flex-shrink: 0;
       }
-
       .section-one-one .title {
         max-width: 510px;
         font-weight: 400;
@@ -60,7 +58,6 @@
         color: var(--text-color);
         margin-bottom: 30px;
       }
-
       .section-one-one .button {
         display: inline-block;
         padding: 15px 30px;
@@ -72,7 +69,6 @@
         font-size: 16px;
         width: 90%;
       }
-
       .clipped-image {
         display: block;
         flex: 1;
@@ -88,7 +84,9 @@
           0 26.5%
         );
       }
-
+      .section-two {
+        margin-bottom: 100px;
+      }
       .section-two .massa-title {
         font-family: "Montserrat", sans-serif;
         font-weight: 300;
@@ -106,13 +104,14 @@
       .section-two img {
         max-width: 100%;
         height: auto;
+        display: block;
       }
-
       .accordion-item {
         border-bottom: 1px solid #e5e7eb;
       }
       .accordion-header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         gap: 15px;
         padding: 20px 0;
@@ -135,7 +134,6 @@
         font-size: 15px;
         line-height: 1.6;
         text-align: left;
-        padding-left: 39px;
       }
       .accordion-item.active .accordion-content {
         max-height: 200px;
@@ -144,7 +142,46 @@
       .accordion-item.active .arrow {
         transform: rotate(180deg);
       }
-
+      .section-three {
+        margin-bottom: 100px;
+      }
+      .section-three-title,
+      .section-four-title {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--text-color);
+        margin-bottom: 30px;
+        border-left: 4px solid var(--brand-orange);
+        padding-left: 15px;
+      }
+      .categories-wrapper {
+        background-color: #f9fafb;
+        padding: 50px 30px;
+        clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .category-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+        color: #374151;
+        font-size: 18px;
+      }
+      .category-item img {
+        width: 80px;
+        height: 80px;
+      }
+      .section-four-image {
+        max-width: 839px;
+        width: 100%;
+        height: auto;
+      }
       .tablet-two,
       .desktop-two {
         display: none;
@@ -155,16 +192,15 @@
         align-items: center;
         gap: var(--gap-large);
       }
-      .mob-two > div:first-child {
-        text-align: center;
+      .tablet-four,
+      .desktop-four {
+        display: none;
       }
-      .mob-two .massa-title {
-        font-size: 60px;
+      .mob-four {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
       }
-      .mob-two .items-container {
-        width: 100%;
-      }
-
       @media (min-width: 600px) and (max-width: 1024px) {
         .mob-two,
         .desktop-two {
@@ -178,17 +214,22 @@
           gap: var(--gap-large);
           align-items: center;
         }
-        .tablet-two-one > div:first-child {
+        .tablet-two-one > div {
           flex: 1;
         }
-        .tablet-two-one > div:last-child {
-          flex: 1;
+        .mob-four,
+        .desktop-four {
+          display: none;
         }
-        .tablet-two-one img {
-          margin-top: 20px;
+        .tablet-four {
+          display: flex;
+          align-items: center;
+          gap: 40px;
+        }
+        .tablet-four > div {
+          flex: 1;
         }
       }
-
       @media (min-width: 1025px) {
         .mob-two,
         .tablet-two {
@@ -197,20 +238,31 @@
         .desktop-two {
           display: flex;
           align-items: flex-start;
-          justify-content: center;
-          gap: 100px;
+          justify-content: space-between;
         }
         .desktop-two-image {
-          flex: 1.2;
+          flex: 0 1 55%;
           max-width: 838px;
-          clip-path: polygon(15% 0%, 100% 0%, 100% 65%, 65% 100%, 0 100%, 0 15%);
+          clip-path: polygon(15% 0, 100% 0, 100% 65%, 65% 100%, 0 100%, 0 15%);
         }
         .desktop-two-content {
-          flex: 1;
+          flex: 0 1 40%;
           padding-top: 40px;
         }
+        .mob-four,
+        .tablet-four {
+          display: none;
+        }
+        .desktop-four {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-around;
+          gap: 40px;
+        }
+        .desktop-four > div {
+          flex: 1;
+        }
       }
-
       @media (max-width: 1024px) {
         .section-one {
           flex-direction: column;
@@ -249,10 +301,7 @@
       <div class="section-two">
         <div class="desktop-two">
           <div class="desktop-two-image">
-            <img
-              src="./assets/section_two/3.png"
-              alt="Orange armchair"
-            />
+            <img src="./assets/section_two/3.png" alt="Orange armchair" />
           </div>
           <div class="desktop-two-content">
             <h3 class="massa-title">MASSA</h3>
@@ -263,7 +312,6 @@
             <div class="items-container"></div>
           </div>
         </div>
-
         <div class="tablet-two">
           <div class="tablet-two-one">
             <div>
@@ -280,7 +328,6 @@
             <div class="items-container"></div>
           </div>
         </div>
-
         <div class="mob-two">
           <div>
             <h3 class="massa-title">MASSA</h3>
@@ -291,6 +338,57 @@
           </div>
           <img src="./assets/section_two/1.png" alt="Orange sofa" />
           <div class="items-container"></div>
+        </div>
+      </div>
+
+      <div class="section-three">
+        <p class="section-three-title">
+          Красивые, стильные модели представлены в категориях:
+        </p>
+        <div class="categories-wrapper"></div>
+      </div>
+
+      <div class="section-four">
+        <div class="desktop-four">
+          <div>
+            <p class="section-four-title">
+              Вступая в клуб дизайнеров MASSA, вы получаете:
+            </p>
+            <div class="accordion-four-container"></div>
+          </div>
+          <div>
+            <img
+              src="./assets/section_four/1.png"
+              alt="Woman reading a magazine in a modern interior"
+              class="section-four-image"
+            />
+          </div>
+        </div>
+        <div class="tablet-four">
+          <div>
+            <p class="section-four-title">
+              Вступая в клуб дизайнеров MASSA, вы получаете:
+            </p>
+            <div class="accordion-four-container"></div>
+          </div>
+          <div>
+            <img
+              src="./assets/section_four/2.png"
+              alt="Woman reading a magazine in a modern interior"
+              class="section-four-image"
+            />
+          </div>
+        </div>
+        <div class="mob-four">
+          <p class="section-four-title">
+            Вступая в клуб дизайнеров MASSA, вы получаете:
+          </p>
+          <img
+            src="./assets/section_four/1.png"
+            alt="Woman reading a magazine in a modern interior"
+            class="section-four-image"
+          />
+          <div class="accordion-four-container"></div>
         </div>
       </div>
     </div>
@@ -324,16 +422,49 @@
         },
       ];
 
+      const dataSectionThree = [
+        { src: "./assets/section_three/1.svg", text: "Диваны" },
+        { src: "./assets/section_three/2.svg", text: "Гостиные" },
+        { src: "./assets/section_three/3.svg", text: "Спальни" },
+        { src: "./assets/section_three/4.svg", text: "Прихожие" },
+        { src: "./assets/section_three/5.svg", text: "Столы" },
+        { src: "./assets/section_three/6.svg", text: "Стулья" },
+      ];
+
+      const dataSectionFour = [
+        {
+          item: "Доступ к базе 3D моделей",
+          content: "к базе 3D-моделей всей нашей мебели.",
+        },
+        {
+          item: "Участие в программе лояльности",
+          content: "приятные бонусы с каждого совместного проекта.",
+        },
+        {
+          item: "Персональный менеджер",
+          content:
+            "который ответит на все вопросы о продукции: наличие, сроки поставки. Отправит живые фото и видео.",
+        },
+        {
+          item: "Индивидуальный подбор",
+          content: "композиций для проектов.",
+        },
+        {
+          item: "Бесплатное хранение",
+          content: "заказа на нашем складе, если ремонт ещё в самом разгаре.",
+        },
+      ];
+
       function createAccordionHTML(data) {
         return data
           .map(
             (d) => `
             <div class="accordion-item">
               <div class="accordion-header">
+                <span>${d.item}</span>
                 <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>${d.item}</span>
               </div>
               <div class="accordion-content">
                 <p>${d.content}</p>
@@ -344,24 +475,44 @@
           .join("");
       }
 
-      const accordionHtml = createAccordionHTML(dataSectionTwo);
-      document.querySelectorAll(".items-container").forEach((container) => {
-        container.innerHTML = accordionHtml;
-      });
+      function initAccordions(containerSelector, data) {
+        const accordionHtml = createAccordionHTML(data);
+        document.querySelectorAll(containerSelector).forEach((container) => {
+          container.innerHTML = accordionHtml;
 
-      document.querySelectorAll(".accordion-header").forEach((header) => {
-        header.addEventListener("click", (event) => {
-          const accordionItem = header.parentElement;
-          accordionItem.classList.toggle("active");
+          container.querySelectorAll(".accordion-header").forEach((header) => {
+            header.addEventListener("click", () => {
+              header.parentElement.classList.toggle("active");
+            });
+          });
+
+          const firstItem = container.querySelector(".accordion-item");
+          if (firstItem) {
+            firstItem.classList.add("active");
+          }
         });
-      });
+      }
 
-      document.querySelectorAll(".items-container").forEach((container) => {
-        const firstItem = container.querySelector(".accordion-item");
-        if (firstItem) {
-          firstItem.classList.add("active");
-        }
-      });
+      function createCategoriesHTML(data) {
+        return data
+          .map(
+            (category) => `
+          <div class="category-item">
+            <img src="${category.src}" alt="${category.text} icon">
+            <p>${category.text}</p>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      const categoriesContainer = document.querySelector(".categories-wrapper");
+      if (categoriesContainer) {
+        categoriesContainer.innerHTML = createCategoriesHTML(dataSectionThree);
+      }
+
+      initAccordions(".items-container", dataSectionTwo);
+      initAccordions(".accordion-four-container", dataSectionFour);
     </script>
   </body>
 </html>
