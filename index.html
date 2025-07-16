@@ -4,14 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Massa Designers</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
-
     <style>
       :root {
         --text-color: #1f2937;
@@ -33,7 +31,6 @@
         max-width: 1920px;
         margin: 40px auto;
         padding: 20px;
-        outline: 1px solid red;
       }
       .section-one {
         display: flex;
@@ -146,13 +143,15 @@
         margin-bottom: 100px;
       }
       .section-three-title,
-      .section-four-title {
+      .section-four-title,
+      .section-five-title {
         font-size: 24px;
         font-weight: 500;
         color: var(--text-color);
         margin-bottom: 30px;
         border-left: 4px solid var(--brand-orange);
         padding-left: 15px;
+        line-height: 1.4;
       }
       .categories-wrapper {
         background-color: #f9fafb;
@@ -177,29 +176,87 @@
         width: 80px;
         height: 80px;
       }
+      .section-four {
+        margin-bottom: 100px;
+      }
       .section-four-image {
-        max-width: 839px;
-        width: 100%;
+        max-width: 100%;
         height: auto;
       }
-      .tablet-two,
-      .desktop-two {
-        display: none;
-      }
-      .mob-two {
+      .registration-form {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: var(--gap-large);
+        gap: 20px;
       }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .form-group label {
+        font-size: 14px;
+        color: #6b7280;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="tel"],
+      .form-group input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+      .form-group-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        color: #4b5563;
+      }
+      .form-group-checkbox input {
+        margin-top: 5px;
+        flex-shrink: 0;
+      }
+      .submit-button {
+        width: 100%;
+        padding: 15px;
+        background-color: #1f2937;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .tablet-two,
+      .desktop-two,
       .tablet-four,
       .desktop-four {
         display: none;
       }
-      .mob-four {
+      .mob-two,
+      .mob-four,
+      .section-five {
         display: flex;
         flex-direction: column;
         gap: 20px;
+      }
+      .mobile-five-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        clip-path: polygon(40% 0, 100% 0, 100% 60%, 60% 100%, 0 100%, 0 40%);
+      }
+      .tablet-five-image,
+      .desktop-five-image {
+        display: none;
+      }
+      .form-five-content {
+        order: 2;
+      }
+      .form-five-image-wrapper {
+        order: 1;
       }
       @media (min-width: 600px) and (max-width: 1024px) {
         .mob-two,
@@ -223,11 +280,34 @@
         }
         .tablet-four {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 40px;
         }
         .tablet-four > div {
           flex: 1;
+        }
+        .section-five {
+          flex-direction: row;
+          align-items: center;
+          gap: 40px;
+        }
+        .form-five-content {
+          flex: 1;
+          order: 0;
+        }
+        .form-five-image-wrapper {
+          flex: 1;
+          order: 0;
+        }
+        .mobile-five-image,
+        .desktop-five-image {
+          display: none;
+        }
+        .tablet-five-image {
+          display: block;
+          width: 100%;
+          height: auto;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
       }
       @media (min-width: 1025px) {
@@ -256,11 +336,35 @@
         .desktop-four {
           display: flex;
           align-items: flex-start;
-          justify-content: space-around;
+          justify-content: space-between;
           gap: 40px;
         }
         .desktop-four > div {
           flex: 1;
+        }
+        .section-five {
+          flex-direction: row;
+          align-items: center;
+          gap: 60px;
+        }
+        .form-five-content {
+          flex: 0 0 45%;
+          max-width: 600px;
+          order: 0;
+        }
+        .form-five-image-wrapper {
+          flex: 1;
+          order: 0;
+        }
+        .mobile-five-image,
+        .tablet-five-image {
+          display: none;
+        }
+        .desktop-five-image {
+          display: block;
+          width: 100%;
+          height: auto;
+          clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
       }
       @media (max-width: 1024px) {
@@ -297,7 +401,6 @@
           alt="Designers discussing a project"
         />
       </div>
-
       <div class="section-two">
         <div class="desktop-two">
           <div class="desktop-two-image">
@@ -340,14 +443,12 @@
           <div class="items-container"></div>
         </div>
       </div>
-
       <div class="section-three">
         <p class="section-three-title">
           Красивые, стильные модели представлены в категориях:
         </p>
         <div class="categories-wrapper"></div>
       </div>
-
       <div class="section-four">
         <div class="desktop-four">
           <div>
@@ -391,8 +492,57 @@
           <div class="accordion-four-container"></div>
         </div>
       </div>
+      <div class="section-five">
+        <div class="form-five-content">
+          <p class="section-five-title">Вступить в клуб дизайнеров MASSA</p>
+          <form class="registration-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Имя</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="surname">Фамилия</label>
+              <input type="text" id="surname" name="surname" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Номер телефона</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Электронная почта</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group-checkbox">
+              <input type="checkbox" id="subscribe" name="subscribe" checked />
+              <label for="subscribe"
+                >I want to receive emails about the product, feature updates,
+                events, and marketing promotions.</label
+              >
+            </div>
+            <button type="submit" class="submit-button">
+              Зарегистрироваться
+            </button>
+          </form>
+        </div>
+        <div class="form-five-image-wrapper">
+          <img
+            src="./assets/section_five/1.png"
+            alt="Stylish modern interior"
+            class="desktop-five-image"
+          />
+          <img
+            src="./assets/section_five/2.png"
+            alt="Stylish modern interior for tablet"
+            class="tablet-five-image"
+          />
+          <img
+            src="./assets/section_five/3.png"
+            alt="Stylish modern interior for mobile"
+            class="mobile-five-image"
+          />
+        </div>
+      </div>
     </div>
-
     <script>
       const dataSectionTwo = [
         {
@@ -421,7 +571,6 @@
             "вся мебель отлично сочетается, создавая единую интерьерную концепцию.",
         },
       ];
-
       const dataSectionThree = [
         { src: "./assets/section_three/1.svg", text: "Диваны" },
         { src: "./assets/section_three/2.svg", text: "Гостиные" },
@@ -430,7 +579,6 @@
         { src: "./assets/section_three/5.svg", text: "Столы" },
         { src: "./assets/section_three/6.svg", text: "Стулья" },
       ];
-
       const dataSectionFour = [
         {
           item: "Доступ к базе 3D моделей",
@@ -454,7 +602,6 @@
           content: "заказа на нашем складе, если ремонт ещё в самом разгаре.",
         },
       ];
-
       function createAccordionHTML(data) {
         return data
           .map(
@@ -474,25 +621,21 @@
           )
           .join("");
       }
-
       function initAccordions(containerSelector, data) {
         const accordionHtml = createAccordionHTML(data);
         document.querySelectorAll(containerSelector).forEach((container) => {
           container.innerHTML = accordionHtml;
-
           container.querySelectorAll(".accordion-header").forEach((header) => {
             header.addEventListener("click", () => {
               header.parentElement.classList.toggle("active");
             });
           });
-
           const firstItem = container.querySelector(".accordion-item");
           if (firstItem) {
             firstItem.classList.add("active");
           }
         });
       }
-
       function createCategoriesHTML(data) {
         return data
           .map(
@@ -505,12 +648,10 @@
           )
           .join("");
       }
-
       const categoriesContainer = document.querySelector(".categories-wrapper");
       if (categoriesContainer) {
         categoriesContainer.innerHTML = createCategoriesHTML(dataSectionThree);
       }
-
       initAccordions(".items-container", dataSectionTwo);
       initAccordions(".accordion-four-container", dataSectionFour);
     </script>
