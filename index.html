@@ -8,15 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
 
     <style>
+      :root {
+        --text-color: #1f2937;
+        --background-color: #fff;
+        --gap-small: 20px;
+        --gap-large: 40px;
+      }
+      * {
+        box-sizing: border-box;
+      }
       body {
-        background-color: #fff;
+        background-color: var(--background-color);
         font-family: "Inter", sans-serif;
         margin: 0;
+        overflow-x: hidden;
       }
 
       .container {
@@ -29,7 +39,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
+        gap: var(--gap-small);
+        margin-bottom: 80px;
       }
 
       .section-one-one {
@@ -45,9 +56,8 @@
         font-weight: 400;
         font-size: 40px;
         line-height: 48px;
-        letter-spacing: 0;
         text-align: center;
-        color: #1f2937;
+        color: var(--text-color);
         margin-bottom: 30px;
       }
 
@@ -66,7 +76,7 @@
       .clipped-image {
         display: block;
         flex: 1;
-        min-width: 0;   
+        min-width: 0;
         max-width: 1129px;
         height: auto;
         clip-path: polygon(
@@ -79,22 +89,141 @@
         );
       }
 
+      .section-two .massa-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 300;
+        font-size: 80px;
+        color: var(--text-color);
+        margin: 0 0 15px 0;
+      }
+      .section-two .massa-description {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #4b5563;
+        max-width: 450px;
+        margin-bottom: 30px;
+      }
+      .section-two img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .accordion-item {
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .accordion-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: left;
+      }
+      .accordion-header .arrow {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+        color: #4b5563;
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: left;
+        padding-left: 39px;
+      }
+      .accordion-item.active .accordion-content {
+        max-height: 200px;
+        padding-bottom: 20px;
+      }
+      .accordion-item.active .arrow {
+        transform: rotate(180deg);
+      }
+
+      .tablet-two,
+      .desktop-two {
+        display: none;
+      }
+      .mob-two {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--gap-large);
+      }
+      .mob-two > div:first-child {
+        text-align: center;
+      }
+      .mob-two .massa-title {
+        font-size: 60px;
+      }
+      .mob-two .items-container {
+        width: 100%;
+      }
+
+      @media (min-width: 600px) and (max-width: 1024px) {
+        .mob-two,
+        .desktop-two {
+          display: none;
+        }
+        .tablet-two {
+          display: block;
+        }
+        .tablet-two-one {
+          display: flex;
+          gap: var(--gap-large);
+          align-items: center;
+        }
+        .tablet-two-one > div:first-child {
+          flex: 1;
+        }
+        .tablet-two-one > div:last-child {
+          flex: 1;
+        }
+        .tablet-two-one img {
+          margin-top: 20px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        .mob-two,
+        .tablet-two {
+          display: none;
+        }
+        .desktop-two {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 100px;
+        }
+        .desktop-two-image {
+          flex: 1.2;
+          max-width: 838px;
+          clip-path: polygon(15% 0%, 100% 0%, 100% 65%, 65% 100%, 0 100%, 0 15%);
+        }
+        .desktop-two-content {
+          flex: 1;
+          padding-top: 40px;
+        }
+      }
+
       @media (max-width: 1024px) {
         .section-one {
           flex-direction: column;
           gap: 40px;
         }
-
         .section-one-one {
           max-width: 100%;
           order: 2;
         }
-
         .section-one-one .title {
           font-size: 32px;
           line-height: 40px;
         }
-
         .clipped-image {
           width: 100%;
           max-width: none;
@@ -110,13 +239,129 @@
           <div class="title">Присоединяйтесь к клубу дизайнеров MASSA</div>
           <a href="#" class="button">Зарегистрироваться</a>
         </div>
-
         <img
           class="clipped-image"
           src="./assets/section_one/1.png"
-          alt="Дизайнеры обсуждают проект"
+          alt="Designers discussing a project"
         />
       </div>
+
+      <div class="section-two">
+        <div class="desktop-two">
+          <div class="desktop-two-image">
+            <img
+              src="./assets/section_two/3.png"
+              alt="Orange armchair"
+            />
+          </div>
+          <div class="desktop-two-content">
+            <h3 class="massa-title">MASSA</h3>
+            <p class="massa-description">
+              уникальный магазин мебели, где легко и удобно, подбирать готовые
+              композиции и интерьеры для обустройства дома или квартиры.
+            </p>
+            <div class="items-container"></div>
+          </div>
+        </div>
+
+        <div class="tablet-two">
+          <div class="tablet-two-one">
+            <div>
+              <h3 class="massa-title">MASSA</h3>
+              <p class="massa-description">
+                уникальный магазин мебели, где легко и удобно, подбирать готовые
+                композиции и интерьеры для обустройства дома или квартиры.
+              </p>
+              <img
+                src="./assets/section_two/2.png"
+                alt="Orange armchair from the side"
+              />
+            </div>
+            <div class="items-container"></div>
+          </div>
+        </div>
+
+        <div class="mob-two">
+          <div>
+            <h3 class="massa-title">MASSA</h3>
+            <p class="massa-description">
+              уникальный магазин мебели, где легко и удобно, подбирать готовые
+              композиции и интерьеры для обустройства дома или квартиры.
+            </p>
+          </div>
+          <img src="./assets/section_two/1.png" alt="Orange sofa" />
+          <div class="items-container"></div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      const dataSectionTwo = [
+        {
+          item: "Удобный конструктор мебели",
+          content:
+            "где можно собирать свои комнаты с точными размерами и планировками.",
+        },
+        {
+          item: "Модульная система NEO с шагом 5 см",
+          content:
+            "легко подобрать шкафы, полки и стеллажи под любое пространство, не переплачивая за нестандартные размеры.",
+        },
+        {
+          item: '"Система бесконечность"',
+          content:
+            "вариативность комбинаций модулей, практически, бесконечна. Вы точно соберёте уникальную интерьерную композицию.",
+        },
+        {
+          item: "Идеальная совместимость",
+          content:
+            "все модули корпусной мебели имеют одинаковую высоту и глубину, а это значит, что вся композиция будет ровной без зазоров и перепадов.",
+        },
+        {
+          item: "Простая комбинация",
+          content:
+            "вся мебель отлично сочетается, создавая единую интерьерную концепцию.",
+        },
+      ];
+
+      function createAccordionHTML(data) {
+        return data
+          .map(
+            (d) => `
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>${d.item}</span>
+              </div>
+              <div class="accordion-content">
+                <p>${d.content}</p>
+              </div>
+            </div>
+          `
+          )
+          .join("");
+      }
+
+      const accordionHtml = createAccordionHTML(dataSectionTwo);
+      document.querySelectorAll(".items-container").forEach((container) => {
+        container.innerHTML = accordionHtml;
+      });
+
+      document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", (event) => {
+          const accordionItem = header.parentElement;
+          accordionItem.classList.toggle("active");
+        });
+      });
+
+      document.querySelectorAll(".items-container").forEach((container) => {
+        const firstItem = container.querySelector(".accordion-item");
+        if (firstItem) {
+          firstItem.classList.add("active");
+        }
+      });
+    </script>
   </body>
 </html>
