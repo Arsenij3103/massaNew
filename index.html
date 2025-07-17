@@ -21,6 +21,9 @@
       * {
         box-sizing: border-box;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         background-color: var(--background-color);
         font-family: "Inter", sans-serif;
@@ -31,6 +34,7 @@
         max-width: 1920px;
         margin: 40px auto;
         padding: 20px;
+        width: 100%;
       }
       .section-one {
         display: flex;
@@ -65,6 +69,7 @@
         border-radius: 8px;
         font-size: 16px;
         width: 90%;
+        cursor: pointer;
       }
       .clipped-image {
         display: block;
@@ -364,7 +369,7 @@
           display: block;
           width: 100%;
           height: auto;
-          clip-path:polygon(35% 0, 100% 0, 100% 65%, 65% 100%, 0 100%, 0 40%);
+          clip-path: polygon(35% 0, 100% 0, 100% 65%, 65% 100%, 0 100%, 0 40%);
         }
       }
       @media (max-width: 1024px) {
@@ -393,11 +398,11 @@
       <div class="section-one">
         <div class="section-one-one">
           <div class="title">Присоединяйтесь к клубу дизайнеров MASSA</div>
-          <a href="#" class="button">Зарегистрироваться</a>
+          <a href="#registration-form" class="button">Зарегистрироваться</a>
         </div>
         <img
           class="clipped-image"
-          src="./assets/1.png"
+          src="./assets/1.webp"
           alt="Designers discussing a project"
         />
       </div>
@@ -459,7 +464,7 @@
           </div>
           <div>
             <img
-              src="./assets/2.png"
+              src="./assets/2.webp"
               alt="Woman reading a magazine in a modern interior"
               class="section-four-image"
             />
@@ -485,14 +490,14 @@
             Вступая в клуб дизайнеров MASSA, вы получаете:
           </p>
           <img
-            src="./assets/section_four/1.png"
+            src="./assets/2.webp"
             alt="Woman reading a magazine in a modern interior"
             class="section-four-image"
           />
           <div class="accordion-four-container"></div>
         </div>
       </div>
-      <div class="section-five">
+      <div id="registration-form" class="section-five">
         <div class="form-five-content">
           <p class="section-five-title">Вступить в клуб дизайнеров MASSA</p>
           <form class="registration-form" action="#" method="POST">
@@ -506,7 +511,13 @@
             </div>
             <div class="form-group">
               <label for="phone">Номер телефона</label>
-              <input type="tel" id="phone" name="phone" required />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="+7 (___) ___-__-__"
+              />
             </div>
             <div class="form-group">
               <label for="email">Электронная почта</label>
@@ -526,7 +537,7 @@
         </div>
         <div class="form-five-image-wrapper">
           <img
-            src="./assets/4.png"
+            src="./assets/4.webp"
             alt="Stylish modern interior"
             class="desktop-five-image"
           />
@@ -654,6 +665,49 @@
       }
       initAccordions(".items-container", dataSectionTwo);
       initAccordions(".accordion-four-container", dataSectionFour);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const phoneInput = document.getElementById("phone");
+
+        const applyPhoneMask = (event) => {
+          let matrix = "+7 (___) ___-__-__",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = event.target.value.replace(/\D/g, "");
+
+          if (val.length > 0 && (val.charAt(0) === "8" || val.charAt(0) === "7")) {
+            val = "7" + val.slice(1);
+          }
+
+          if (def.length >= val.length) val = def;
+
+          event.target.value = matrix.replace(/./g, function (a) {
+            return /[_\d]/.test(a) && i < val.length
+              ? val.charAt(i++)
+              : i >= val.length
+              ? ""
+              : a;
+          });
+        };
+
+        const onPhoneInputFocus = (event) => {
+          if (!event.target.value) {
+            event.target.value = "+7 (";
+          }
+        };
+
+        const onPhoneInputBlur = (event) => {
+            if (event.target.value.replace(/\D/g, '') === '7') {
+                event.target.value = '';
+            }
+        };
+
+        if (phoneInput) {
+          phoneInput.addEventListener("input", applyPhoneMask, false);
+          phoneInput.addEventListener("focus", onPhoneInputFocus, false);
+          phoneInput.addEventListener("blur", onPhoneInputBlur, false);
+        }
+      });
     </script>
   </body>
 </html>
